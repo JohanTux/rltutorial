@@ -72,9 +72,9 @@ class Room {
             bool isOpen = this->doors.at(j).doorState;
 
             if (isOpen){
-                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "O");
+                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "#");
               } else {
-                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "X");
+                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "=");
               };
             j++;
           }
@@ -174,6 +174,7 @@ int screenSetup() {
 }
 
 std::vector<Room> mapSetUp() {
+    srand(time(NULL));
 
     std::vector<Room> rooms;
 
@@ -185,10 +186,51 @@ std::vector<Room> mapSetUp() {
 //    mvprintw(18,13,"--------");
 
     rooms.push_back( Room(13, 13, 6, 8) ); // x, y, height, width
-    rooms[0].doors.push_back( Door(Position {16,13} ) );
-    rooms[0].doors.push_back( Door(Position {21,16}, CLOSED ) );
-    rooms[0].doors.push_back( Door(Position {17,18} ) );
-    rooms[0].doors.push_back( Door(Position {13,15} ) );
+//    rooms[0].doors.push_back( Door(Position {16,13} ) );
+//    rooms[0].doors.push_back( Door(Position {21,16}, CLOSED ) );
+//    rooms[0].doors.push_back( Door(Position {17,18} ) );
+//    rooms[0].doors.push_back( Door(Position {13,15} ) );
+
+    /*top door*/
+//    int x1, y1;
+//    x1 = rand() % rooms.at(0).width + rooms.at(0).origin.x;
+//    y1 = rooms.at(0).origin.y;
+
+    for (int i = 0; i < 4; i++ ){
+        switch (i) {
+          case 0: //top door
+            rooms.at(0).doors.push_back( Door(Position {  rand() % rooms.at(0).width + rooms.at(0).origin.x,
+                                                          rooms.at(0).origin.y
+                                                        }
+                                              )
+                                         );
+            break;
+          case 1: //left door
+            rooms.at(0).doors.push_back( Door(Position {  rooms.at(0).width + rooms.at(0).origin.x,
+                                                          rand() % rooms.at(0).height + rooms.at(0).origin.y
+                                                        }
+                                              )
+                                         );
+            break;
+          case 2: //bottom door
+            rooms.at(0).doors.push_back( Door(Position {  rand() % rooms.at(0).width + rooms.at(0).origin.x,
+                                                          rooms.at(0).origin.y + rooms.at(0).height -1
+                                                        }
+                                              )
+                                         );
+            break;
+          case 3: //right door
+            rooms.at(0).doors.push_back( Door(Position {  rooms.at(0).origin.x,
+                                                          rand() % rooms.at(0).height + rooms.at(0).origin.y
+                                                        }
+                                              )
+                                         );
+            break;
+
+          }
+
+      }
+
     rooms[0].drawRoom();
 
 //    mvprintw( 9,40,"--------");
