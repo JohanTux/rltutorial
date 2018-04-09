@@ -14,3 +14,5 @@ QMAKE_CXXFLAGS += -std=gnu++11
 
 unix: CONFIG += link_pkgconfig
 unix: PKGCONFIG += ncurses
+
+HEADERS +=
