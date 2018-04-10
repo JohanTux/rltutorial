@@ -72,9 +72,9 @@ class Room {
             bool isOpen = this->doors.at(j).doorState;
 
             if (isOpen){
-                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "#");
+                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "O");
               } else {
-                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "=");
+                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "X");
               };
             j++;
           }
