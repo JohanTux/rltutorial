@@ -1,7 +1,11 @@
 #include "door.h"
 
-Door::Door()
+Door::Door(Position p, DoorState s)
 {
+
+    this->doorLocation = p;
+    this->doorState = s;
+
 
 }
 
