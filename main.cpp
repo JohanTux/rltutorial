@@ -4,73 +4,14 @@
 #include <vector>
 #include <fstream>
 #include <string>
-#include <cstdlib>git pu
+#include <cstdlib>
 #include <chrono>
 #include "door.h"
 #include "room.h"
 
-
 using namespace std;
 
 int screenSetup();
-
-
-
-<<<<<<< HEAD
-=======
-class Room {
-    public:
-    Position origin;
-    int height;
-    int width;
-    std::vector<Door> doors;
-
-    Room(int x, int y, int height, int width){
-        this->origin = {x,y};
-        this->height = height;
-        this->width = width;
-    }
-
-    int drawRoom() {
-        int x, y;
-
-        /*draw top and bottom*/
-        for (x = this->origin.x; x <= this->origin.x + this->width; x++) {
-            mvprintw(this->origin.y, x, "-"); //top
-            mvprintw(this->origin.y + this->height - 1, x, "-");  //bottom
-        }
-
-        /* draw the side walls & floors*/
-
-        for (x = this->origin.x; x <= this->origin.x + this->width; x++){
-            for (y = this->origin.y + 1; y < this->origin.y + this->height - 1; y++){
-                if( (x == this->origin.x) || (x == this->origin.x + this->width) ){
-                    mvprintw(y,x,"|");      //side walls
-                } else {
-                  mvprintw(y,x,".");        //floor
-                }
-            }
-        }
-
-        /*place the room's doors*/
-        int j = 0;
-        for (auto i = this->doors.begin(); i != this->doors.end(); i++){
-            bool isOpen = this->doors.at(j).doorState;
-
-            if (isOpen){
-                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "O");
-              } else {
-                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "X");
-              };
-            j++;
-          }
-
-
-        return 1;
-    }
-
-};
->>>>>>> 689e8f23071ece86309ddd5df645f15f272b7b76
 
 class Player {
     public:
