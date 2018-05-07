@@ -4,20 +4,34 @@
 #include <vector>
 #include <fstream>
 #include <string>
-#include <cstdlib>git pu
+#include <cstdlib>
 #include <chrono>
-#include "door.h"
-#include "room.h"
 
 
 using namespace std;
 
 int screenSetup();
+enum DoorState {CLOSED, OPEN};
+struct Position{
+    int x;
+    int y;
+};
+
+class Door {
+
+
+public:
+  Position doorLocation;
+  DoorState doorState;
+
+  Door (Position p, DoorState s=OPEN){
+    this->doorLocation = p;
+    this->doorState = s;
+  }
+};
 
 
 
-<<<<<<< HEAD
-=======
 class Room {
     public:
     Position origin;
@@ -58,9 +72,9 @@ class Room {
             bool isOpen = this->doors.at(j).doorState;
 
             if (isOpen){
-                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "O");
+                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "#");
               } else {
-                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "X");
+                mvprintw( this->doors.at(j).doorLocation.y,doors.at(j).doorLocation.x, "=");
               };
             j++;
           }
@@ -70,7 +84,6 @@ class Room {
     }
 
 };
->>>>>>> 689e8f23071ece86309ddd5df645f15f272b7b76
 
 class Player {
     public:
